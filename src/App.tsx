@@ -1,7 +1,5 @@
-import { useState } from 'react'
-
 import './App.css'
-import Button from './ui-components/Button'
+import Button from './ui-components/Button/Button'
 
 function App() {
 
