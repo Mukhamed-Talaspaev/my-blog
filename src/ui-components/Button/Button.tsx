@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./Button.module.scss";
 
-import BookmarkIcon from "../assets/Icon-Bookmark.svg?react";
-import ThumbUp from "../assets/thumbUp.svg?react";
-import ThumbDown from "../assets/thumbDown.svg?react";
+import {ReactComponent as BookmarkIcon} from "../../assets/Icon-Bookmark.svg";
+import {ReactComponent as ThumbUp} from "../../assets/thumbUp.svg";
+import {ReactComponent as ThumbDown} from "../../assets/thumbDown.svg";
 
 interface IButton {
   variant?: "primary" | "secondary-1" | "secondary-2";
