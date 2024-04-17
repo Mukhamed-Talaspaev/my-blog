@@ -1,0 +1,13 @@
+.navbar {
+    position: absolute;
+    width: 200px;
+    height: 95vh;
+    background: #5360CD;
+    padding: 0 30px;
+    left: -100%;
+    transition: all 1s;
+
+}
+.navbar.active{
+    left: 0;
+}

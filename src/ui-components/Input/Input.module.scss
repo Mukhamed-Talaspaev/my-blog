@@ -1,0 +1,11 @@
+.input {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    &:focus-visible{
+        border: 0;
+        padding-block: 0;
+    padding-inline: 0;
+    border-image-width: 0;
+    }
+}
