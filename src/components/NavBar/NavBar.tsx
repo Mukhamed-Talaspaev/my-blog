@@ -1,8 +1,11 @@
+import { useContext } from "react"
 import Personal from "../../ui-components/Personal/Personal"
 import styles from './NavBar.module.scss'
-const NavBar =({isActive}:{isActive:boolean})=>{
+import { ActiveContext } from "../../Context/context"
+const NavBar =()=>{
+    const context =useContext(ActiveContext)
     return(
-        <div className={!isActive?styles.navbar:`${styles.navbar} ${styles.active}`}>
+        <div className={!context?.isActive?styles.navbar:`${styles.navbar} ${styles.active}`}>
             <Personal userName={'mukhamed Talaspayev'}/>
         </div>
     )
