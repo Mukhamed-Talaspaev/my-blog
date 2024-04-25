@@ -1,5 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./Personal.module.scss";
 const Personal = ({ userName }: { userName: string }) => {
+  const navigate=useNavigate()
   const splitFunction = (userName: string) => {
     return userName
       .split(" ")
@@ -8,7 +10,7 @@ const Personal = ({ userName }: { userName: string }) => {
   };
 
   return (
-    <button className={styles.personal}>
+    <button onClick={()=>navigate('/profile')} className={styles.personal}>
       <div className={styles.short}>{splitFunction(userName)}</div>
       <div>{userName}</div>
     </button>

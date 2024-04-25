@@ -1,22 +1,20 @@
-import { useEffect, useRef, useState } from "react"
-import Button from "./ui-components/Button/Button"
+import { Outlet } from "react-router-dom"
+import { ActiveContext } from "./Context/context"
+import Header from "./components/Header/Header"
+import NavBar from "./components/NavBar/NavBar"
+import { useState } from "react"
 
 const Layout =()=>{
-  const [input, setInput]=useState('')
-  const inputref=useRef<HTMLInputElement|null>(null)
-
-  useEffect(()=>{
-
-
-  })
-  return(  
+  const [isActive,setIsactive]=useState(false)
+  return (
+    <ActiveContext.Provider value={{isActive:isActive,setIsactive:setIsactive}}>
+    <Header/>
+      <NavBar />
+      <Outlet/>
+      <footer>It's Footer</footer>
+  </ActiveContext.Provider>
+  ) 
    
-     <section >
-      <Button disabled={false} bookmark handler={()=>console.log('flex') } >click</Button>
-       <button onClick={()=>inputref.current!.focus()}>click</button>
-      <input ref={inputref} value={input} onChange={(event)=>setInput(event.target.value)}/>
-
-  
-    </section>)
+    
 }
 export default Layout
