@@ -4,3 +4,8 @@ export interface IActiveContext{
 export interface IChildren{
     children:React.ReactNode[]|React.ReactNode
 }
+export interface IAuthContext {
+    isAuth: string;
+    signin: (auth: string, callBack: () => void) => void;
+    signout: (callBack: () => void) => void;
+  }
