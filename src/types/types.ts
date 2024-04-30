@@ -9,3 +9,8 @@ export interface IAuthContext {
     signin: (auth: string, callBack: () => void) => void;
     signout: (callBack: () => void) => void;
   }
+  export interface TodoItemTypes{
+    id:string,
+    text:string,
+    checked:boolean
+}
