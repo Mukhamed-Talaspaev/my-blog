@@ -9,6 +9,7 @@ import Posts from "./pages/Posts/Posts";
 import Post from "./pages/Post/Post";
 import Profile from "./pages/Profile/Profile";
 import Auth from "./HOC/Auth";
+import Favorite from "./pages/Favorite/Favorite";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           />
           <Route path="posts/:isbn13" element={<Post />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="favorite" element={<Favorite/>}/>
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

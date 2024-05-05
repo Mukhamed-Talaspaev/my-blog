@@ -14,3 +14,8 @@ export interface IAuthContext {
     text:string,
     checked:boolean
 }
+export interface ICard{
+    authors: string;
+    image: string;
+    desc: string;
+}

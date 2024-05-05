@@ -41,7 +41,11 @@ const NavBar = () => {
             about
           </NavLink>
         </li>
-
+        <li>
+        <NavLink onClick={closeNavbar} className={MyClassName()} to="/favorite">
+            favourite
+          </NavLink>
+        </li>
         <li>
           <NavLink onClick={closeNavbar} className={MyClassName()} to="/posts">
             Posts

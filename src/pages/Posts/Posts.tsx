@@ -8,6 +8,7 @@ const Posts = () => {
       .then((responce) => responce.json())
       .then((data) => setPosts(data.books));
   }, []);
+  
   const postTorender = posts.map(({ isbn13, title, image }) => (
     <div key={isbn13}>
       <h3>{title}</h3>
