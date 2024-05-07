@@ -16,7 +16,8 @@ export const createUser=createAsyncThunk('user/createUser',async (signinObj:{
                 "course_group": 7
               }),
             headers: {
-              'Content-type': 'application/json; charset=UTF-8',
+                "Content-Type": "application/json",
+                "X-CSRFToken": "2u9EiabuRdAvpzVVsb1AyBCN4NHiCd5Ea3MCV5Pzj5kaopDjEW0Dqhmb3jXgmn3p"
             },
           })
        
