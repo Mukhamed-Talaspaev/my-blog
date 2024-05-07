@@ -10,9 +10,10 @@ export interface IAuthContext {
     signout: (callBack: () => void) => void;
   }
   export interface TodoItemTypes{
-    id:string,
-    text:string,
-    checked:boolean
+    userId:number,
+    id:number,
+    title:string,
+    completed:boolean
 }
 export interface ICard{
     authors: string;
