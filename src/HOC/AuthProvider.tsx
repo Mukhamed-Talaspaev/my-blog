@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { IAuthContext } from "../types/types";
+import { IAuthContext, User } from "../types/types";
 
 export const AuthContext = createContext<IAuthContext | null>(null);
 
@@ -8,14 +8,24 @@ const AuthProvider = ({
 }: {
   children: React.ReactNode | React.ReactNode[];
 }) => {
-  const [isAuth, setIsAuth] = useState("");
+  const [isAuth, setIsAuth] = useState({
+    username: "",
+    email: "",
+    password: "",
+    course_group: 7
+  });
 
-  const signin = (auth: string, callBack: () => void) => {
+  const signin = (auth: User, callBack: () => void) => {
     setIsAuth(auth);
     callBack();
   };
   const signout = (callBack: () => void) => {
-    setIsAuth("");
+    setIsAuth({
+      username: "",
+      email: "",
+      password: "",
+      course_group: 7
+    });
     callBack();
   };
   const value = { isAuth, signin, signout };

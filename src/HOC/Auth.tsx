@@ -15,7 +15,7 @@ const Auth = ({ children }: IChildren) => {
    // 
    
   const { isAuth } = useAuth() || {};
-  if (!isAuth) {
+  if (isAuth.email) {
     return <Navigate to={"/login"} state={{from:location}}/>;
     // Помимо того что мы перенаравляем пользателя на логин старницу, 
     // мы можем передать state который будет доступен через useLocation()

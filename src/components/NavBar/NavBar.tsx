@@ -51,7 +51,7 @@ const NavBar = () => {
             Posts
           </NavLink>
         </li>
-        {!isAuth ? (
+        {!isAuth.email ? (
           <Button disabled={false} handler={login}>
             Login
           </Button>

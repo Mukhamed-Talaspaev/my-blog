@@ -10,6 +10,8 @@ import Post from "./pages/Post/Post";
 import Profile from "./pages/Profile/Profile";
 import Auth from "./HOC/Auth";
 import Favorite from "./pages/Favorite/Favorite";
+import Confirmation from "./pages/Confirmation/Confirmation";
+import Activation from "./pages/Activation/Activation";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="favorite" element={<Favorite/>}/>
           <Route path="*" element={<NotFound />} />
+          <Route path="/confirmation" element={<Confirmation/>}/>
+          <Route path="activate/:uid/:token" element={<Activation/>}/>
         </Route>
       </Routes>
     </>

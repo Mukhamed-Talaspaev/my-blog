@@ -1,20 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { ActivateUser, User } from "../types/types";
 
-export const createUser=createAsyncThunk('user/createUser',async (signinObj:{
-    username: number;
-    email: string;
-    password: string;
-    course_group: number;
-},{rejectWithValue,dispatch})=>{
+export const signUpUser=createAsyncThunk('user/signUpUser',async (activateObj:User,{rejectWithValue,dispatch})=>{
     try {
         const responce = await fetch('https://studapi.teachmeskills.by/auth/users/',{
             method: 'POST',
-            body: JSON.stringify({
-                "username": signinObj.username,
-                "email": signinObj.email,
-                "password": signinObj.password,
-                "course_group": 7
-              }),
+            body: JSON.stringify(activateObj),
             headers: {
                 "Content-Type": "application/json",
                 "X-CSRFToken": "2u9EiabuRdAvpzVVsb1AyBCN4NHiCd5Ea3MCV5Pzj5kaopDjEW0Dqhmb3jXgmn3p"
@@ -26,14 +17,33 @@ export const createUser=createAsyncThunk('user/createUser',async (signinObj:{
             throw new Error('Error is here  ):')
         }
         const data = await responce.json()
-//      data=  {
-//   "id": 8222,
-//   "username": "Mukhamed",
-//   "email": "mukhamed.talaspayev@gmail.com",
-//   "course_group": 7
-// }
-
-        dispatch(addUser(data))
+        console.log(data)
+       dispatch(addUser(data))
+    } catch (error) {
+        return rejectWithValue((error as Error).message)
+    }
+})
+export const activateUser=createAsyncThunk('user/activateUser',async (activateObj:ActivateUser,{rejectWithValue})=>{
+    try {
+        const obj={
+            "uid":  activateObj.uid,
+            "token": activateObj.token
+          }
+        const responce = await fetch('https://studapi.teachmeskills.by/auth/users/activation/',{
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: {
+                "Content-Type": "application/json",
+            },
+          })
+       
+// console.log("activateObj",activateObj)
+        if(!responce.ok){
+            throw new Error('Error is here  ):')
+        }
+        const data = await responce.json()
+        console.log(data)
+    //    dispatch(addUser(data))
     } catch (error) {
         return rejectWithValue((error as Error).message)
     }
