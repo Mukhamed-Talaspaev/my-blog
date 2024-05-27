@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux"
 import { signUpUser } from "../store/userSlice"
 import { Action, ThunkDispatch } from "@reduxjs/toolkit"
 
-const Login =()=>{
+const SignUp =()=>{
 
     const [value,setValue]=useState(  {
         username: "",
@@ -57,11 +57,11 @@ const Login =()=>{
             <input type='email' name="email" value={value.email} placeholder="email" onChange={inputHandler}/>
             <input type='password' name="password" value={value.password} placeholder="password" onChange={inputHandler}/>
 
-            {/* <input value={input} name="login" onChange={(event)=>setInput(event.target.value)}/> */}
+            {/* <input value={input} name="SignUp" onChange={(event)=>setInput(event.target.value)}/> */}
             <button type='submit'>Submit</button>
             {/* Logout находится в навбар
             src/components/NavBar/NavBar.tsx */}
         </form>
     </h1>
 }
-export default Login
+export default SignUp

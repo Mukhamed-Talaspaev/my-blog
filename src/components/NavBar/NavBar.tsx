@@ -15,12 +15,12 @@ const NavBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const closeNavbar = () => context?.setIsactive(false);
-  const logOut = () => {
-    signout(() => navigate("/", { replace: true }));
+  const sigIn = () => {
+    signout(() => navigate("/sign-in", { replace: true }));
     closeNavbar();
   };
-  const login = () => {
-    navigate("/login", {state: { from: location } });
+  const signUp = () => {
+    navigate("/sign-up", {state: { from: location } });
     closeNavbar();
   };
   return (
@@ -51,15 +51,15 @@ const NavBar = () => {
             Posts
           </NavLink>
         </li>
-        {!isAuth.email ? (
-          <Button disabled={false} handler={login}>
-            Login
+   
+          <Button disabled={false} handler={signUp}>
+            Sign UP
           </Button>
-        ) : (
-          <Button disabled={false} handler={logOut}>
-            LogOunt
+      
+          <Button disabled={false} handler={sigIn}>
+          Sign IN
           </Button>
-        )}
+      
       </ul>
     </div>
   );

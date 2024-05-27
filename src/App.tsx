@@ -2,7 +2,6 @@ import "./App.css";
 import Layout from "./Layout";
 import { Routes, Route, Navigate } from "react-router-dom";
 import About from "./pages/About";
-import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import Posts from "./pages/Posts/Posts";
@@ -12,6 +11,8 @@ import Auth from "./HOC/Auth";
 import Favorite from "./pages/Favorite/Favorite";
 import Confirmation from "./pages/Confirmation/Confirmation";
 import Activation from "./pages/Activation/Activation";
+import SignUp from "./pages/SignUp";
+import SignIN from "./pages/SignIN";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="about-us" element={<Navigate to="/about" />} />
-          <Route path="login" element={<Login />} />
+          <Route path="sign-up" element={<SignUp />} />
           <Route
             path="posts"
             element={
@@ -36,7 +37,8 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/confirmation" element={<Confirmation/>}/>
           <Route path="activate/:uid/:token" element={<Activation/>}/>
-        </Route>
+          <Route path="sign-in"element={<SignIN/>}/>    
+           </Route>
       </Routes>
     </>
   );
