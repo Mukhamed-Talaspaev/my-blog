@@ -84,10 +84,11 @@ const handleOrderingChange = (e) => {
                 </select>
             </div>
     <div>
-      {post.map(({title,description})=>{
+      {post.map(({title,description,image})=>{
         return <div>
           <h2>{title}</h2>
           <p>{description}</p>
+          <img src={image}/>
         </div>
       })}
       <button onClick={handlePreviousPage} disabled={currentPage===1}>Prev</button>

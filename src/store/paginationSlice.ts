@@ -3,7 +3,7 @@ const API_URL='https://studapi.teachmeskills.by/blog/posts/'
 export const fetchPosts = createAsyncThunk(
     'pagination/fetchPosts',
     async ({ limit, offset, search,ordering }) => {
-        const response = await fetch(`${API_URL}?limit=${limit}&offset=${offset}&search=${search}&ordering=${ordering}`);
+        const response = await fetch(`${API_URL}?author__course_group=7&limit=${limit}&offset=${offset}&search=${search}&ordering=${ordering}`);
         const data = await response.json()
         return data;
     }

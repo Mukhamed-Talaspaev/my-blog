@@ -20,7 +20,7 @@ const NavBar = () => {
     closeNavbar();
   };
   const signUp = () => {
-    navigate("/sign-up", {state: { from: location } });
+    navigate("/sign-up", { state: { from: location } });
     closeNavbar();
   };
   return (
@@ -42,7 +42,11 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-        <NavLink onClick={closeNavbar} className={MyClassName()} to="/favorite">
+          <NavLink
+            onClick={closeNavbar}
+            className={MyClassName()}
+            to="/favorite"
+          >
             favourite
           </NavLink>
         </li>
@@ -51,15 +55,23 @@ const NavBar = () => {
             Posts
           </NavLink>
         </li>
-   
-          <Button disabled={false} handler={signUp}>
-            Sign UP
-          </Button>
-      
-          <Button disabled={false} handler={sigIn}>
+        <li>
+          <NavLink
+            onClick={closeNavbar}
+            className={MyClassName()}
+            to="/create-post"
+          >
+            Create post
+          </NavLink>
+        </li>
+
+        <Button disabled={false} handler={signUp}>
+          Sign UP
+        </Button>
+
+        <Button disabled={false} handler={sigIn}>
           Sign IN
-          </Button>
-      
+        </Button>
       </ul>
     </div>
   );

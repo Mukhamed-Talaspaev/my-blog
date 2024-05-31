@@ -13,6 +13,7 @@ import Confirmation from "./pages/Confirmation/Confirmation";
 import Activation from "./pages/Activation/Activation";
 import SignUp from "./pages/SignUp";
 import SignIN from "./pages/SignIN";
+import CreatePost from "./pages/CreatePost/CreatePost";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/confirmation" element={<Confirmation/>}/>
           <Route path="activate/:uid/:token" element={<Activation/>}/>
           <Route path="sign-in"element={<SignIN/>}/>    
+          <Route path="create-post" element={<CreatePost/>}/>
            </Route>
       </Routes>
     </>
