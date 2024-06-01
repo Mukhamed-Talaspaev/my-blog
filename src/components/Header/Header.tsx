@@ -8,7 +8,7 @@ const Header =()=>{
     <div className={styles.header}>
          <Burger/>
          <Input/>
-         <Personal userName={'mukhamed Talaspayev'}/>
+         <Personal/>
       </div>)
   }
   export default Header

@@ -11,7 +11,7 @@ const NavBar = () => {
     () =>
     ({ isActive }: { isActive: boolean }) =>
       isActive ? `${styles.active}` : `${styles.nonActive}`;
-  const { isAuth, signout } = useAuth();
+  const { signout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const closeNavbar = () => context?.setIsactive(false);
@@ -29,7 +29,7 @@ const NavBar = () => {
         !context?.isActive ? styles.navbar : `${styles.navbar} ${styles.active}`
       }
     >
-      <Personal userName={"mukhamed Talaspayev"} />
+      <Personal />
       <ul>
         <li>
           <NavLink onClick={closeNavbar} className={MyClassName()} to="/">

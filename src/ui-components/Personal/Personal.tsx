@@ -6,15 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Action, ThunkDispatch } from "@reduxjs/toolkit";
 const Personal = () => {
   const dispatch=useDispatch<ThunkDispatch<unknown, unknown, Action>>()
-  const {username} = useSelector((state)=>state.user.user)||{username:'somthing'}
+  const {username} = useSelector((state)=>(state as {user:{user:{username:''}}}).user.user)||{username:'somthing'}
 
   const navigate=useNavigate()
-  const splitFunction = (userName: string) => {
-    return userName
-      .split(" ")
-      .map((el) => el[0].toUpperCase())
-      .join("");
-  };
+  // const splitFunction = (userName: string) => {
+  //   return userName
+  //     .split(" ")
+  //     .map((el) => el[0].toUpperCase())
+  //     .join("");
+  // };
   useEffect(()=>{
     dispatch(getUserInfo())
   },[])

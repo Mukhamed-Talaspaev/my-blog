@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const createPost=createAsyncThunk('post/createPost',async (formData,{rejectWithValue})=>{
+export const createPost=createAsyncThunk('post/createPost',async (formData:FormData,{rejectWithValue})=>{
     try{
-        const {access}= JSON.parse(localStorage.getItem('Login'))
+        const {access}= JSON.parse(localStorage.getItem('Login') as string)
         const response=await fetch('https://studapi.teachmeskills.by/blog/posts/',
         {
             method:"POST",
@@ -38,7 +38,7 @@ const postSlice=createSlice({
             state.error=null
         })
         .addCase(createPost.rejected,(state,action)=>{
-            state.error=action.payload
+            state.error=(action.payload)as null
             state.status="error"
         })
     }

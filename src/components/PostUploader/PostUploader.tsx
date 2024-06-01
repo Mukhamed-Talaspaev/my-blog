@@ -1,19 +1,24 @@
-import React, { useEffect } from 'react';
-import ImageUploading from 'react-images-uploading';
+import React, { useEffect } from "react";
+import ImageUploading ,{ ImageListType }from "react-images-uploading";
 
-const PostUploader = ({addImage,remove,clickedHandler})=> {
+const PostUploader = ({
+  addImage,
+  remove,
+}: {
+  addImage: (image:File|undefined) => void;
+  remove: boolean;
+}) => {
   const [images, setImages] = React.useState([]);
   const maxNumber = 69;
 
-  const onChange = (imageList, addUpdateIndex) => {
+  const onChange = (imageList:ImageListType) => {
     // data for submit
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList);
-    addImage(imageList[0].file)
+    setImages(imageList as never[]);
+    addImage(imageList[0].file) ;
   };
-  useEffect(()=>{
-    setImages([])
-  },[remove])
+  useEffect(() => {
+    setImages([]);
+  }, [remove]);
 
   return (
     <div className="App">
@@ -34,15 +39,12 @@ const PostUploader = ({addImage,remove,clickedHandler})=> {
           dragProps,
         }) => (
           // write your building UI
-          
+
           <div className="upload__image-wrapper">
             <button
-            className='upload'
-              style={isDragging ? { color: 'red' } : undefined}
-              onClick={(event)=>{
-                clickedHandler(event.currentTarget.className)
-                onImageUpload()
-            }}
+              className="upload"
+              style={isDragging ? { color: "red" } : undefined}
+              onClick={onImageUpload}
               {...dragProps}
             >
               Click or Drop here
@@ -51,7 +53,7 @@ const PostUploader = ({addImage,remove,clickedHandler})=> {
             <button onClick={onImageRemoveAll}>Remove all images</button>
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
-                <img src={image['data_url']} alt="" width="100" />
+                <img src={image["data_url"]} alt="" width="100" />
                 <div className="image-item__btn-wrapper">
                   <button onClick={() => onImageUpdate(index)}>Update</button>
                   <button onClick={() => onImageRemove(index)}>Remove</button>
@@ -63,5 +65,5 @@ const PostUploader = ({addImage,remove,clickedHandler})=> {
       </ImageUploading>
     </div>
   );
-}
-export default PostUploader
+};
+export default PostUploader;

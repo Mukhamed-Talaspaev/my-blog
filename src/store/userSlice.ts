@@ -49,7 +49,10 @@ export const activateUser=createAsyncThunk('user/activateUser',async (activateOb
         return rejectWithValue((error as Error).message)
     }
 })
-export const getUser =createAsyncThunk('user/sigIN',async (userLogin,{rejectWithValue})=>{
+export const getUser =createAsyncThunk('user/sigIN',async (userLogin:{
+    email: string;
+    password: string;
+},{rejectWithValue})=>{
     try{
           const responce = await  fetch('https://studapi.teachmeskills.by/auth/jwt/create/',
             {
@@ -70,7 +73,7 @@ export const getUser =createAsyncThunk('user/sigIN',async (userLogin,{rejectWith
 })
 export const refreshToken=createAsyncThunk('user/refreshToken',async (_,{rejectWithValue})=>{
     try{
-        const {refresh}= JSON.parse(localStorage.getItem('Login'))
+        const {refresh}= JSON.parse(localStorage.getItem('Login')as string)
         const responce =await fetch('https://studapi.teachmeskills.by/auth/jwt/refresh/',{
             method:"POST",
             headers: {
@@ -89,7 +92,7 @@ export const refreshToken=createAsyncThunk('user/refreshToken',async (_,{rejectW
 })
 export const getUserInfo=createAsyncThunk('user/getUserInfo',async (_,{rejectWithValue,dispatch}) => {
     try{
-            const {access}= JSON.parse(localStorage.getItem('Login'))
+            const {access}= JSON.parse(localStorage.getItem('Login') as string)
      
             const responce =await fetch('https://studapi.teachmeskills.by/auth/users/me/',{
                 method:"GET",
@@ -125,7 +128,7 @@ const favoritesSlice = createSlice({
         
     },
     extraReducers:builder=>{
-    builder.addCase(getUserInfo.rejected,(state,action)=>{
+    builder.addCase(getUserInfo.rejected,(action)=>{
 
         console.log(action)
 })

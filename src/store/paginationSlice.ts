@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { FetchPost } from "../types/types";
 const API_URL='https://studapi.teachmeskills.by/blog/posts/'
 export const fetchPosts = createAsyncThunk(
     'pagination/fetchPosts',
-    async ({ limit, offset, search,ordering }) => {
+    async ({ limit, offset, search,ordering }:FetchPost) => {
         const response = await fetch(`${API_URL}?author__course_group=7&limit=${limit}&offset=${offset}&search=${search}&ordering=${ordering}`);
         const data = await response.json()
         return data;
@@ -43,7 +44,7 @@ const paginationSlice =createSlice({
         })
         .addCase(fetchPosts.rejected,(state,action)=>{
             state.status="rejected",
-            state.error=action.error.message
+            state.error=action.error as unknown as null
         })
     }
 })

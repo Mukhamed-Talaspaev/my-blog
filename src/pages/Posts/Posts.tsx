@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
-import styles from "./posts.module.scss";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { changeCurrentPage, fetchPosts, setOrdering, setSearchQuery } from "../../store/paginationSlice";
+import { FetchPost, initalPost } from "../../types/types";
+import { Action, ThunkDispatch } from "@reduxjs/toolkit";
 const Posts = () => {
 
-  const{post,currentPage,status,itemsPerPage,totalCount,searchQuery,ordering}=useSelector(state=>state.pagination)
-  const dispatch=useDispatch()
+  const{post,currentPage,status,itemsPerPage,totalCount,searchQuery,ordering}=useSelector(state=>(state as {pagination:initalPost}).pagination)
+  const dispatch=useDispatch<ThunkDispatch<unknown, unknown, Action>>()
   useEffect(() => {
-    dispatch(fetchPosts({limit:itemsPerPage,offset:(currentPage-1)*itemsPerPage,search: searchQuery,ordering} ))
+    dispatch(fetchPosts({ limit: itemsPerPage, offset: (currentPage - 1) * itemsPerPage, search: searchQuery, ordering } as unknown as FetchPost ))
   }, [currentPage, dispatch, itemsPerPage,searchQuery,ordering]);
   
-  const setCurrentPage =(i)=>{
+  const setCurrentPage =(i:number)=>{
     dispatch(changeCurrentPage(i))
   }
   const numberofPage = () => {
@@ -52,16 +53,19 @@ const handlePreviousPage = () => {
   }
 };
 
-const handleSearchChange = (e) => {
+const handleSearchChange = (e:React.ChangeEvent<HTMLInputElement>) => {
   dispatch(setSearchQuery(e.target.value));
 };
 
-const handleSearchSubmit = (e) => {
+const handleSearchSubmit = (e:React.ChangeEvent<HTMLFormElement>) => {
   e.preventDefault();
-  dispatch(fetchPosts({ limit: itemsPerPage, offset: 0, search: searchQuery }));
+  dispatch(fetchPosts({
+    limit: itemsPerPage as unknown as string, offset: 0 as unknown as string, search: searchQuery,
+    ordering: ""
+  }));
   dispatch(changeCurrentPage(1));
 };
-const handleOrderingChange = (e) => {
+const handleOrderingChange = (e:React.ChangeEvent<HTMLSelectElement>) => {
   dispatch(setOrdering(e.target.value));
 };
   return <div>
